@@ -1,0 +1,83 @@
+﻿<Page x:Class="Исмагилов_ЯШ.ClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Исмагилов_ЯШ"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ClientPage" FontFamily="Comic Sans MS">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <!--ЛИСТЬЮ-->
+        <ListView Name="ClientListView" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="600"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Изображение -->
+                        <Image Width="150" Height="150" Grid.Column="0" Grid.RowSpan="4" 
+       HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image.Source>
+                                <Binding Path="PhotoPath">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>
+                                            RES/picture.png
+                                        </ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Margin="5" FontSize="20" Text="ID: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding ID}"/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding LastName}"/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding FirstName}"/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding Patronymic}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Margin="5" FontSize="20" Text="Пол: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding GenderName}"/>
+                            <TextBlock Margin="5" FontSize="20" Text="Дата рождения: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding BirthdayString}"/>
+
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Margin="5" FontSize="20" Text="Телефон: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding Phone}"/>
+                            <TextBlock Margin="5" FontSize="20" Text="Email: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding Email}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Margin="5" FontSize="20" Text="Дата регистрации: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding RegistrationDateString}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock Margin="5" FontSize="20" Text="Последнее посещение: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding LastEntry}"/>
+                            <TextBlock Margin="5" FontSize="20" Text="Кол-во посещения: "/>
+                            <TextBlock Margin="5" FontSize="20" Text="{Binding VisitCount}"/>
+                        </StackPanel>
+
+                       
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
