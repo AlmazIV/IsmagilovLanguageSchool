@@ -23,6 +23,7 @@ namespace Исмагилов_ЯШ
         public AddEditPage()
         {
             InitializeComponent();
+            List<Client> CurrentPageList = new List<Client>();
         }
     }
 }

@@ -74,10 +74,55 @@
                             <TextBlock Margin="5" FontSize="20" Text="{Binding VisitCount}"/>
                         </StackPanel>
 
-                       
+                        
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <!--СОРТИРОВКА-->
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+
+            <TextBox Name="SearchTBox" Margin="5" Width="200" Height="30" FontSize="20" TextChanged="SearchTBox_TextChanged"/>
+
+            <ComboBox Name="GenderCBox" Width="150" Height="30" Margin="5" FontSize="15" SelectionChanged="GenderCBox_SelectionChanged">
+                <ComboBoxItem Content="Все"/>
+                <ComboBoxItem Content="Мужской"/>
+                <ComboBoxItem Content="Женский"/>
+            </ComboBox>
+
+            <ComboBox Name="SortCBox" Width="150" Height="30" Margin="5" FontSize="15" SelectionChanged="SortCBox_SelectionChanged">
+                <ComboBoxItem Content="Все"/>
+                <ComboBoxItem Content="По фамилии (а-я)"/>
+                <ComboBoxItem Content="Последнее посещение (убывание)"/>
+                <ComboBoxItem Content="По кол-ву посещений (убывание)"/>
+            </ComboBox>
+            
+        </StackPanel>
+        <!--ПОСТРАНИЧНЫЙ ВЫВОД-->
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+            <TextBlock Name="TBCount" FontSize="20" Margin="5"/>
+            <TextBlock Name="TBAllRecords" FontSize="20" Margin="5"/>
+
+            <TextBlock Text="Выводить по " Margin="5" FontSize="20"/>
+            <ComboBox Name="CountPeopleCBox" Width="150" Height="30" FontSize="20" Margin="5" SelectionChanged="CountPeopleCBox_SelectionChanged">
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="50"/>
+                <ComboBoxItem Content="200"/>
+                <ComboBoxItem Content="Все"/>
+            </ComboBox>
+
+
+            <Button Name="LeftDirBtn" Content="&lt;" Width="30" Margin="5" FontSize="20" Click="LeftDirBtn_Click"/>
+            <ListBox Name="PageListBox" Margin="5" FontSize="20" MouseUp="PageListBox_MouseUp">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Button Name="RightDirBtn" Content="&gt;" Width="30" Margin="5" FontSize="20" Click="RightDirBtn_Click"/>
+        </StackPanel>
+
     </Grid>
 </Page>
