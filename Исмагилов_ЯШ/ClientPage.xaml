@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Исмагилов_ЯШ"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ClientPage" FontFamily="Comic Sans MS">
+      Title="ClientPage" FontFamily="Comic Sans MS" IsVisibleChanged="Page_IsVisibleChanged">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -55,7 +55,6 @@
                             <TextBlock Margin="5" FontSize="20" Text="{Binding GenderName}"/>
                             <TextBlock Margin="5" FontSize="20" Text="Дата рождения: "/>
                             <TextBlock Margin="5" FontSize="20" Text="{Binding BirthdayString}"/>
-
                         </StackPanel>
                         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                             <TextBlock Margin="5" FontSize="20" Text="Телефон: "/>
@@ -73,8 +72,12 @@
                             <TextBlock Margin="5" FontSize="20" Text="Кол-во посещения: "/>
                             <TextBlock Margin="5" FontSize="20" Text="{Binding VisitCount}"/>
                         </StackPanel>
+                        <StackPanel Grid.Row ="2" Grid.Column="3"  Orientation="Horizontal">
+                            <Button Name="DLT_Button"  Content="Удалить" Click="DLT_Button_Click"></Button>
+                            <Button Name="EDIT_Button"  Content="Редактировать"  Click="EDIT_Button_Click" ></Button>
 
-                        
+                        </StackPanel>
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -96,7 +99,8 @@
                 <ComboBoxItem Content="Последнее посещение (убывание)"/>
                 <ComboBoxItem Content="По кол-ву посещений (убывание)"/>
             </ComboBox>
-            
+            <Button Name="ADD_Button" Content="Добавить клиента" Margin="10" Click="ADD_Button_Click" Width="Auto" ></Button>
+
         </StackPanel>
         <!--ПОСТРАНИЧНЫЙ ВЫВОД-->
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center">

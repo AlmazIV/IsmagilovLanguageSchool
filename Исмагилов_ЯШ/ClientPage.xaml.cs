@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -102,7 +104,15 @@ namespace Исмагилов_ЯШ
             UpdatePeople();
         }
 
-       
+        private string GetProjectRootDirectory()
+        {
+            // Путь к исполняемому файлу (bin/Debug)
+            string exePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            // Поднимаемся на 3 уровня: bin/Debug → bin → Корень проекта
+            return System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(exePath)));
+        }
+
+        
 
         private void DLT_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -233,6 +243,25 @@ namespace Исмагилов_ЯШ
             ChangePage(0, 0);
         }
 
-        
+        private void EDIT_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Client));
+        }
+
+        private void ADD_Button_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddEditPage(null));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                ИсмагиловЯШEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                ClientListView.ItemsSource = ИсмагиловЯШEntities.GetContext().Client.ToList();
+                UpdatePeople();
+            }
+
+        }
     }
 }
